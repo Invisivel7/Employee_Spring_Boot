@@ -30,7 +30,7 @@ public class EmployeeService {
 	
 	public void deleteEmployee(Long id) {
 		if(!employeeRepository.existsById(id)) {
-			throw new Error("Employee with ID " + id + "not found");
+			throw new Error("Employee with ID " + id + " not found");
 		}
 		
 		employeeRepository.deleteById(id);
