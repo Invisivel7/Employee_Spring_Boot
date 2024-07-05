@@ -32,7 +32,10 @@ public class EmployeeService {
 		if(!employeeRepository.existsById(id)) {
 			throw new Error("Employee with ID " + id + " not found");
 		}
-		
 		employeeRepository.deleteById(id);
+	}
+	
+	public Employee getEmployeeById(Long id){
+		return employeeRepository.findById(id).orElse(null);
 	}
 }
