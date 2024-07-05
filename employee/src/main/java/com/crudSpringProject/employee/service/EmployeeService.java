@@ -1,5 +1,7 @@
 package com.crudSpringProject.employee.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.crudSpringProject.employee.entity.Employee;
@@ -20,5 +22,9 @@ public class EmployeeService {
 	
 	public Employee postEmployee(Employee employee) {
 		return employeeRepository.save(employee);
+	}
+	
+	public List<Employee> getAllEmployees(){
+		return employeeRepository.findAll();
 	}
 }
