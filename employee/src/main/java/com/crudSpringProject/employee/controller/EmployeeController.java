@@ -2,8 +2,11 @@ package com.crudSpringProject.employee.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +37,16 @@ public class EmployeeController {
 	@GetMapping("/employees")
 	public List<Employee> getAllEmployees(){
 		return employeeService.getAllEmployees();
+	}
+	
+	public ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
+		try {
+			employeeService.deleteEmployee(id);
+			return new ResponseEntity<>("Employee with ID" + id + "deleted successfully", HttpStatus.OK);
+		} catch (Error e) {
+			// TODO: handle exception
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
 	}
 
 }

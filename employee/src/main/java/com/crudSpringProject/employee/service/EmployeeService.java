@@ -27,4 +27,12 @@ public class EmployeeService {
 	public List<Employee> getAllEmployees(){
 		return employeeRepository.findAll();
 	}
+	
+	public void deleteEmployee(Long id) {
+		if(!employeeRepository.existsById(id)) {
+			throw new Error("Employee with ID " + id + "not found");
+		}
+		
+		employeeRepository.deleteById(id);
+	}
 }
